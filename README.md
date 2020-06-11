@@ -1,8 +1,8 @@
 # Bitcore Lib
 
-[![NPM Package](https://img.shields.io/npm/v/bitcore-lib-mue.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-lib-mue)
-[![Build Status](https://img.shields.io/travis/bitpay/bitcore-lib-mue.svg?branch=master&style=flat-square)](https://travis-ci.org/bitpay/bitcore-lib-mue)
-[![Coverage Status](https://img.shields.io/coveralls/bitpay/bitcore-lib-mue.svg?style=flat-square)](https://coveralls.io/r/bitpay/bitcore-lib-mue)
+[![NPM Package](https://img.shields.io/npm/v/bitcore-audax-lib.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-audax-lib)
+[![Build Status](https://img.shields.io/travis/bitpay/bitcore-audax-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/bitpay/bitcore-audax-lib)
+[![Coverage Status](https://img.shields.io/coveralls/bitpay/bitcore-audax-lib.svg?style=flat-square)](https://coveralls.io/r/bitpay/bitcore-audax-lib)
 
 **A pure and powerful JavaScript Bitcore library.**
 
@@ -13,11 +13,11 @@ Bitcore is a powerful new peer-to-peer platform for the next generation of finan
 ## Get Started
 
 ```sh
-npm install bitcore-lib-mue
+npm install bitcore-audax-lib
 ```
 
 ```sh
-bower install bitcore-lib-mue
+bower install bitcore-audax-lib
 ```
 
 ## Documentation
@@ -38,21 +38,21 @@ The complete docs are hosted here: [bitcore documentation](https://github.com/bi
 
 ## Building the Browser Bundle
 
-To build a bitcore-lib-mue full bundle for the browser:
+To build a bitcore-audax-lib full bundle for the browser:
 
 ```sh
 gulp browser
 ```
 
-This will generate files named `bitcore-lib-mue.js` and `bitcore-lib-mue.min.js`.
+This will generate files named `bitcore-audax-lib.js` and `bitcore-audax-lib.min.js`.
 
-You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout the [releases](https://github.com/bitpay/bitcore/blob/master/packages/bitcore-lib-mue/CHANGELOG.md).
+You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout the [releases](https://github.com/bitpay/bitcore/blob/master/packages/bitcore-audax-lib/CHANGELOG.md).
 
 ## Development & Tests
 
 ```sh
-git clone https://github.com/bitpay/bitcore-lib-mue
-cd bitcore-lib-mue
+git clone https://github.com/bitpay/bitcore-audax-lib
+cd bitcore-audax-lib
 npm install
 ```
 

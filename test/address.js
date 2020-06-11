@@ -12,8 +12,8 @@ var Address = bitcore.Address;
 var Script = bitcore.Script;
 var Networks = bitcore.Networks;
 
-var validbase58 = require('./data/monetaryunitd/base58_keys_valid.json');
-var invalidbase58 = require('./data/monetaryunitd/base58_keys_invalid.json');
+var validbase58 = require('./data/audaxd/base58_keys_valid.json');
+var invalidbase58 = require('./data/audaxd/base58_keys_invalid.json');
 
 describe('Address', function() {
 
@@ -39,7 +39,7 @@ describe('Address', function() {
     }).should.throw('Third argument must be "pubkeyhash" or "scripthash"');
   });
 
-  describe('monetaryunitd compliance', function() {
+  describe('audaxd compliance', function() {
     validbase58.map(function(d) {
       if (!d[2].isPrivkey) {
         it('should describe address ' + d[0] + ' as valid', function() {

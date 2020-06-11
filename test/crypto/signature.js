@@ -8,8 +8,8 @@ var Signature = bitcore.crypto.Signature;
 var JSUtil = bitcore.util.js;
 var Interpreter = bitcore.Script.Interpreter;
 
-var sig_canonical = require('../data/monetaryunitd/sig_canonical');
-var sig_noncanonical = require('../data/monetaryunitd/sig_noncanonical');
+var sig_canonical = require('../data/audaxd/sig_canonical');
+var sig_noncanonical = require('../data/audaxd/sig_noncanonical');
 
 describe('Signature', function() {
 
@@ -251,7 +251,7 @@ describe('Signature', function() {
     });
 
 
-    describe('monetaryunitd fixtures', function() {
+    describe('audaxd fixtures', function() {
       var test_sigs = function(set, expected) {
         var i = 0;
         set.forEach(function(vector) {

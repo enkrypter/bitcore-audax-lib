@@ -190,11 +190,11 @@ describe('BufferReader', function() {
       br.readUInt64LEBN().toNumber().should.equal(1);
     });
 
-    it('should return 10MUE', function() {
-      var tenmue = 10 * 1e8;
-      var tenmueBuffer = new Buffer('00ca9a3b00000000', 'hex');
-      var br = new BufferReader(tenmueBuffer);
-      br.readUInt64LEBN().toNumber().should.equal(tenmue);
+    it('should return 10AUDAX', function() {
+      var tenaudax = 10 * 1e8;
+      var tenaudaxBuffer = new Buffer('00ca9a3b00000000', 'hex');
+      var br = new BufferReader(tenaudaxBuffer);
+      br.readUInt64LEBN().toNumber().should.equal(tenaudax);
     });
 
     it('should return 2^30', function() {

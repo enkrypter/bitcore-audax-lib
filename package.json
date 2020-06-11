@@ -1,7 +1,7 @@
 {
-  "name": "bitcore-lib-mue",
+  "name": "bitcore-audax-lib",
   "version": "8.3.0",
-  "description": "A pure and powerful JavaScript Bitcore MUE library.",
+  "description": "A pure and powerful JavaScript Bitcore AUDAX library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitpay/bitcore-lib/tree/mue"
+    "url": "https://github.com/bitpay/bitcore-lib/tree/audax"
   },
   "browser": {
     "request": "browser-request"

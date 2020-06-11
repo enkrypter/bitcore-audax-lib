@@ -9,10 +9,10 @@
 
 ## Parameters
 
-The constructor is quite permissive with the input arguments. It can take outputs straight out of monetaryunitd's getunspent RPC call. Some of the names are not very informative for new users, so the UnspentOutput constructor also understands these aliases:
+The constructor is quite permissive with the input arguments. It can take outputs straight out of audaxd's getunspent RPC call. Some of the names are not very informative for new users, so the UnspentOutput constructor also understands these aliases:
 
 - `scriptPubKey`: just `script` is also accepted
-- `amount`: expected value in MUE. If the `satoshis` alias is used, make sure to use satoshis instead of MUE.
+- `amount`: expected value in AUDAX. If the `satoshis` alias is used, make sure to use satoshis instead of AUDAX.
 - `vout`: this is the index of the output in the transaction, renamed to `outputIndex`
 - `txid`: `txId`
 

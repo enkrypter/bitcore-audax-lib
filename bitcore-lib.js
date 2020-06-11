@@ -26484,8 +26484,8 @@ BN.prototype.toSM = function(opts) {
 
 /**
  * Create a BN from a "ScriptNum":
- * This is analogous to the constructor for CScriptNum in monetaryunitd. Many ops in
- * monetaryunitd's script interpreter use CScriptNum, which is not really a proper
+ * This is analogous to the constructor for CScriptNum in audaxd. Many ops in
+ * audaxd's script interpreter use CScriptNum, which is not really a proper
  * bignum. Instead, an error is thrown if trying to input a number bigger than
  * 4 bytes. We copy that behavior here. A third argument, `size`, is provided to
  * extend the hard limit of 4 bytes, as some usages require more than 4 bytes.
@@ -27346,7 +27346,7 @@ Signature.prototype.toString = function() {
 };
 
 /**
- * This function is translated from monetaryunitd's IsDERSignature and is used in
+ * This function is translated from audaxd's IsDERSignature and is used in
  * the script interpreter.  This "DER" format actually includes an extra byte,
  * the nhashtype, at the end. It is really the tx format, not DER format.
  *
@@ -27424,7 +27424,7 @@ Signature.isTxDER = function(buf) {
 };
 
 /**
- * Compares to monetaryunitd's IsLowDERSignature
+ * Compares to audaxd's IsLowDERSignature
  * See also ECDSA signature algorithm which enforces this.
  * See also BIP 62, "low S values in signatures"
  */
@@ -27438,7 +27438,7 @@ Signature.prototype.hasLowS = function() {
 
 /**
  * @returns true if the nhashtype is exactly equal to one of the standard options or combinations thereof.
- * Translated from monetaryunitd's IsDefinedHashtypeSignature
+ * Translated from audaxd's IsDefinedHashtypeSignature
  */
 Signature.prototype.hasDefinedHashtype = function() {
   if (!JSUtil.isNaturalNumber(this.nhashtype)) {
@@ -30898,7 +30898,7 @@ Interpreter.prototype.verifyWitnessProgram = function(version, program, witness,
  * @param {number} witness - array of witness data
  * @param {number} satoshis - number of satoshis created by this output
  *
- * Translated from monetaryunitd's VerifyScript
+ * Translated from audaxd's VerifyScript
  */
 Interpreter.prototype.verify = function(scriptSig, scriptPubkey, tx, nin, flags, witness, satoshis) {
 
@@ -31112,8 +31112,8 @@ Interpreter.MAX_SCRIPT_ELEMENT_SIZE = 520;
 Interpreter.LOCKTIME_THRESHOLD = 500000000;
 Interpreter.LOCKTIME_THRESHOLD_BN = new BN(Interpreter.LOCKTIME_THRESHOLD);
 
-// flags taken from monetaryunitd
-// monetaryunitd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
+// flags taken from audaxd
+// audaxd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
 Interpreter.SCRIPT_VERIFY_NONE = 0;
 
 // Making v1-v16 witness program non-standard
@@ -31241,7 +31241,7 @@ Interpreter.castToBool = function(buf) {
 };
 
 /**
- * Translated from monetaryunitd's CheckSignatureEncoding
+ * Translated from audaxd's CheckSignatureEncoding
  */
 Interpreter.prototype.checkSignatureEncoding = function(buf) {
   var sig;
@@ -31273,7 +31273,7 @@ Interpreter.prototype.checkSignatureEncoding = function(buf) {
 };
 
 /**
- * Translated from monetaryunitd's CheckPubKeyEncoding
+ * Translated from audaxd's CheckPubKeyEncoding
  */
 Interpreter.prototype.checkPubkeyEncoding = function(buf) {
   if ((this.flags & Interpreter.SCRIPT_VERIFY_STRICTENC) !== 0 && !PublicKey.isValid(buf)) {
@@ -31291,9 +31291,9 @@ Interpreter.prototype.checkPubkeyEncoding = function(buf) {
 };
 
 /**
- * Based on monetaryunitd's EvalScript function, with the inner loop moved to
+ * Based on audaxd's EvalScript function, with the inner loop moved to
  * Interpreter.prototype.step()
- * monetaryunitd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
+ * audaxd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
  */
 Interpreter.prototype.evaluate = function() {
   if (this.script.toBuffer().length > 10000) {
@@ -31433,8 +31433,8 @@ Interpreter.prototype.checkSequence = function(nSequence) {
   }
 
 /** 
- * Based on the inner loop of monetaryunitd's EvalScript function
- * monetaryunitd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
+ * Based on the inner loop of audaxd's EvalScript function
+ * audaxd commit: b5d1b1092998bc95313856d535c632ea5a8f9104
  */
 Interpreter.prototype.step = function() {
   var fRequireMinimal = (this.flags & Interpreter.SCRIPT_VERIFY_MINIMALDATA) !== 0;
@@ -33487,7 +33487,7 @@ Script.prototype.toAddress = function(network) {
 };
 
 /**
- * Analogous to monetaryunitd's FindAndDelete. Find and delete equivalent chunks,
+ * Analogous to audaxd's FindAndDelete. Find and delete equivalent chunks,
  * typically used with push data chunks.  Note that this will find and delete
  * not just the same data, but the same data with the same push data op as
  * produced by default. i.e., if a pushdata in a tx does not use the minimal
@@ -33511,7 +33511,7 @@ Script.prototype.findAndDelete = function(script) {
 };
 
 /**
- * Comes from monetaryunitd's script interpreter CheckMinimalPush function
+ * Comes from audaxd's script interpreter CheckMinimalPush function
  * @returns {boolean} if the chunk {i} is the smallest way to push that particular data.
  */
 Script.prototype.checkMinimalPush = function(i) {
@@ -33544,7 +33544,7 @@ Script.prototype.checkMinimalPush = function(i) {
 };
 
 /**
- * Comes from monetaryunitd's script DecodeOP_N function
+ * Comes from audaxd's script DecodeOP_N function
  * @param {number} opcode
  * @returns {number} numeric value in range of 0 to 16
  */
@@ -33559,7 +33559,7 @@ Script.prototype._decodeOP_N = function(opcode) {
 };
 
 /**
- * Comes from monetaryunitd's script GetSigOpCount(boolean) function
+ * Comes from audaxd's script GetSigOpCount(boolean) function
  * @param {boolean} use current (true) or pre-version-0.6 (false) logic
  * @returns {number} number of signature operations required by this script
  */
@@ -35191,7 +35191,7 @@ Transaction.prototype._getWitnessHash = function() {
 };
 
 /**
- * Retrieve a hexa string that can be used with monetaryunitd's CLI interface
+ * Retrieve a hexa string that can be used with audaxd's CLI interface
  * (decoderawtransaction, sendrawtransaction)
  *
  * @param {Object|boolean=} unsafe if true, skip all tests. if it's an object,
@@ -35217,7 +35217,7 @@ Transaction.prototype.uncheckedSerialize = Transaction.prototype.toString = func
 };
 
 /**
- * Retrieve a hexa string that can be used with monetaryunitd's CLI interface
+ * Retrieve a hexa string that can be used with audaxd's CLI interface
  * (decoderawtransaction, sendrawtransaction)
  *
  * @param {Object} opts allows to skip certain tests. {@see Transaction#serialize}
@@ -35611,7 +35611,7 @@ Transaction.prototype._newTransaction = function() {
  * Add an input to this transaction. This is a high level interface
  * to add an input, for more control, use @{link Transaction#addInput}.
  *
- * Can receive, as output information, the output of monetaryunitd's `listunspent` command,
+ * Can receive, as output information, the output of audaxd's `listunspent` command,
  * and a slightly fancier format recognized by bitcore:
  *
  * ```
@@ -35633,7 +35633,7 @@ Transaction.prototype._newTransaction = function() {
  * ```javascript
  * var transaction = new Transaction();
  *
- * // From a pay to public key hash output from monetaryunitd's listunspent
+ * // From a pay to public key hash output from audaxd's listunspent
  * transaction.from({'txid': '0000...', vout: 0, amount: 0.1, scriptPubKey: 'OP_DUP ...'});
  *
  * // From a pay to public key hash output
@@ -36354,7 +36354,7 @@ Transaction.prototype.verify = function() {
 };
 
 /**
- * Analogous to monetaryunitd's IsCoinBase function in transaction.h
+ * Analogous to audaxd's IsCoinBase function in transaction.h
  */
 Transaction.prototype.isCoinbase = function() {
   return (this.inputs.length === 1 && this.inputs[0].isNull());
@@ -36417,7 +36417,7 @@ var Unit = require('../unit');
  * @param {string|Script} data.scriptPubKey the script that must be resolved to release the funds
  * @param {string|Script=} data.script alias for `scriptPubKey`
  * @param {number} data.amount amount of bitcoins associated
- * @param {number=} data.satoshis alias for `amount`, but expressed in satoshis (1 MUE = 1e8 satoshis)
+ * @param {number=} data.satoshis alias for `amount`, but expressed in satoshis (1 AUDAX = 1e8 satoshis)
  * @param {string|Address=} data.address the associated address to the script, if provided
  */
 function UnspentOutput(data) {
@@ -36442,7 +36442,7 @@ function UnspentOutput(data) {
   var script = new Script(data.scriptPubKey || data.script);
   $.checkArgument(!_.isUndefined(data.amount) || !_.isUndefined(data.satoshis),
                       'Must provide an amount for the output');
-  var amount = !_.isUndefined(data.amount) ? new Unit.fromMUE(data.amount).toSatoshis() : data.satoshis;
+  var amount = !_.isUndefined(data.amount) ? new Unit.fromAUDAX(data.amount).toSatoshis() : data.satoshis;
   $.checkArgument(_.isNumber(amount), 'Amount must be a number');
   JSUtil.defineImmutable(this, {
     address: address,
@@ -36489,7 +36489,7 @@ UnspentOutput.prototype.toObject = UnspentOutput.prototype.toJSON = function toO
     txid: this.txId,
     vout: this.outputIndex,
     scriptPubKey: this.script.toBuffer().toString('hex'),
-    amount: Unit.fromSatoshis(this.satoshis).toMUE()
+    amount: Unit.fromSatoshis(this.satoshis).toAUDAX()
   };
 };
 
@@ -36504,30 +36504,30 @@ var errors = require('./errors');
 var $ = require('./util/preconditions');
 
 var UNITS = {
-  'MUE'      : [1e8, 8],
-  'mMUE'     : [1e5, 5],
-  'uMUE'     : [1e2, 2],
+  'AUDAX'      : [1e8, 8],
+  'mAUDAX'     : [1e5, 5],
+  'uAUDAX'     : [1e2, 2],
   'bits'     : [1e2, 2],
   'satoshis' : [1, 0]
 };
 
 /**
  * Utility for handling and converting bitcoins units. The supported units are
- * MUE, mMUE, bits (also named uMUE) and satoshis. A unit instance can be created with an
- * amount and a unit code, or alternatively using static methods like {fromMUE}.
+ * AUDAX, mAUDAX, bits (also named uAUDAX) and satoshis. A unit instance can be created with an
+ * amount and a unit code, or alternatively using static methods like {fromAUDAX}.
  * It also allows to be created from a fiat amount and the exchange rate, or
  * alternatively using the {fromFiat} static method.
  * You can consult for different representation of a unit instance using it's
  * {to} method, the fixed unit methods like {toSatoshis} or alternatively using
  * the unit accessors. It also can be converted to a fiat amount by providing the
- * corresponding MUE/fiat exchange rate.
+ * corresponding AUDAX/fiat exchange rate.
  *
  * @example
  * ```javascript
- * var sats = Unit.fromMUE(1.3).toSatoshis();
- * var mili = Unit.fromBits(1.3).to(Unit.mMUE);
+ * var sats = Unit.fromAUDAX(1.3).toSatoshis();
+ * var mili = Unit.fromBits(1.3).to(Unit.mAUDAX);
  * var bits = Unit.fromFiat(1.3, 350).bits;
- * var mue = new Unit(1.3, Unit.bits).MUE;
+ * var audax = new Unit(1.3, Unit.bits).AUDAX;
  * ```
  *
  * @param {Number} amount - The amount to be represented
@@ -36540,13 +36540,13 @@ function Unit(amount, code) {
     return new Unit(amount, code);
   }
 
-  // convert fiat to MUE
+  // convert fiat to AUDAX
   if (_.isNumber(code)) {
     if (code <= 0) {
       throw new errors.Unit.InvalidRate(code);
     }
     amount = amount / code;
-    code = Unit.MUE;
+    code = Unit.AUDAX;
   }
 
   this._value = this._from(amount, code);
@@ -36578,23 +36578,23 @@ Unit.fromObject = function fromObject(data){
 };
 
 /**
- * Returns a Unit instance created from an amount in MUE
+ * Returns a Unit instance created from an amount in AUDAX
  *
- * @param {Number} amount - The amount in MUE
+ * @param {Number} amount - The amount in AUDAX
  * @returns {Unit} A Unit instance
  */
-Unit.fromMUE = function(amount) {
-  return new Unit(amount, Unit.MUE);
+Unit.fromAUDAX = function(amount) {
+  return new Unit(amount, Unit.AUDAX);
 };
 
 /**
- * Returns a Unit instance created from an amount in mMUE
+ * Returns a Unit instance created from an amount in mAUDAX
  *
- * @param {Number} amount - The amount in mMUE
+ * @param {Number} amount - The amount in mAUDAX
  * @returns {Unit} A Unit instance
  */
 Unit.fromMillis = Unit.fromMilis = function(amount) {
-  return new Unit(amount, Unit.mMUE);
+  return new Unit(amount, Unit.mAUDAX);
 };
 
 /**
@@ -36621,7 +36621,7 @@ Unit.fromSatoshis = function(amount) {
  * Returns a Unit instance created from a fiat amount and exchange rate.
  *
  * @param {Number} amount - The amount in fiat
- * @param {Number} rate - The exchange rate MUE/fiat
+ * @param {Number} rate - The exchange rate AUDAX/fiat
  * @returns {Unit} A Unit instance
  */
 Unit.fromFiat = function(amount, rate) {
@@ -36646,7 +36646,7 @@ Unit.prototype.to = function(code) {
     if (code <= 0) {
       throw new errors.Unit.InvalidRate(code);
     }
-    return parseFloat((this.MUE * code).toFixed(2));
+    return parseFloat((this.AUDAX * code).toFixed(2));
   }
 
   if (!UNITS[code]) {
@@ -36658,21 +36658,21 @@ Unit.prototype.to = function(code) {
 };
 
 /**
- * Returns the value represented in MUE
+ * Returns the value represented in AUDAX
  *
- * @returns {Number} The value converted to MUE
+ * @returns {Number} The value converted to AUDAX
  */
-Unit.prototype.toMUE = function() {
-  return this.to(Unit.MUE);
+Unit.prototype.toAUDAX = function() {
+  return this.to(Unit.AUDAX);
 };
 
 /**
- * Returns the value represented in mMUE
+ * Returns the value represented in mAUDAX
  *
- * @returns {Number} The value converted to mMUE
+ * @returns {Number} The value converted to mAUDAX
  */
 Unit.prototype.toMillis = Unit.prototype.toMilis = function() {
-  return this.to(Unit.mMUE);
+  return this.to(Unit.mAUDAX);
 };
 
 /**
@@ -36696,7 +36696,7 @@ Unit.prototype.toSatoshis = function() {
 /**
  * Returns the value represented in fiat
  *
- * @param {string} rate - The exchange rate between MUE/currency
+ * @param {string} rate - The exchange rate between AUDAX/currency
  * @returns {Number} The value converted to satoshis
  */
 Unit.prototype.atRate = function(rate) {
@@ -36719,8 +36719,8 @@ Unit.prototype.toString = function() {
  */
 Unit.prototype.toObject = Unit.prototype.toJSON = function toObject() {
   return {
-    amount: this.MUE,
-    code: Unit.MUE
+    amount: this.AUDAX,
+    code: Unit.AUDAX
   };
 };
 
@@ -36895,9 +36895,9 @@ URI.prototype._fromObject = function(obj) {
 };
 
 /**
- * Internal function to transform a MUE string amount into satoshis
+ * Internal function to transform a AUDAX string amount into satoshis
  *
- * @param {string} amount - Amount MUE string
+ * @param {string} amount - Amount AUDAX string
  * @throws {TypeError} Invalid amount
  * @returns {Object} Amount represented in satoshis
  */
@@ -36906,7 +36906,7 @@ URI.prototype._parseAmount = function(amount) {
   if (isNaN(amount)) {
     throw new TypeError('Invalid amount');
   }
-  return Unit.fromMUE(amount).toSatoshis();
+  return Unit.fromAUDAX(amount).toSatoshis();
 };
 
 URI.prototype.toObject = URI.prototype.toJSON = function toObject() {
@@ -36929,7 +36929,7 @@ URI.prototype.toObject = URI.prototype.toJSON = function toObject() {
 URI.prototype.toString = function() {
   var query = {};
   if (this.amount) {
-    query.amount = Unit.fromSatoshis(this.amount).toMUE();
+    query.amount = Unit.fromSatoshis(this.amount).toAUDAX();
   }
   if (this.message) {
     query.message = this.message;
@@ -38858,7 +38858,7 @@ module.exports={
   "_args": [
     [
       "elliptic@6.4.0",
-      "/Users/justin/repos/bitcore/packages/bitcore-lib-mue"
+      "/Users/justin/repos/bitcore/packages/bitcore-audax-lib"
     ]
   ],
   "_from": "elliptic@6.4.0",
@@ -38884,7 +38884,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_spec": "6.4.0",
-  "_where": "/Users/justin/repos/bitcore/packages/bitcore-lib-mue",
+  "_where": "/Users/justin/repos/bitcore/packages/bitcore-audax-lib",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -56373,7 +56373,7 @@ arguments[4][110][0].apply(exports,arguments)
 arguments[4][148][0].apply(exports,arguments)
 },{"buffer":52,"dup":148}],249:[function(require,module,exports){
 module.exports={
-  "name": "bitcore-lib-mue",
+  "name": "bitcore-audax-lib",
   "version": "8.0.0",
   "description": "A pure and powerful JavaScript Bitcore library.",
   "author": "BitPay <dev@bitpay.com>",
@@ -56403,7 +56403,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitpay/bitcore-lib-mue.git"
+    "url": "https://github.com/bitpay/bitcore-audax-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -56427,7 +56427,7 @@ module.exports={
   "license": "MIT"
 }
 
-},{}],"bitcore-lib-mue":[function(require,module,exports){
+},{}],"bitcore-audax-lib":[function(require,module,exports){
 (function (global,Buffer){
 'use strict';
 
@@ -56437,9 +56437,9 @@ var bitcore = module.exports;
 bitcore.version = 'v' + require('./package.json').version;
 bitcore.versionGuard = function(version) {
   if (version !== undefined) {
-    var message = 'More than one instance of bitcore-lib-mue found. ' +
-      'Please make sure to require bitcore-lib-mue and check that submodules do' +
-      ' not also include their own bitcore-lib-mue dependency.';
+    var message = 'More than one instance of bitcore-audax-lib found. ' +
+      'Please make sure to require bitcore-audax-lib and check that submodules do' +
+      ' not also include their own bitcore-audax-lib dependency.';
     throw new Error(message);
   }
 };

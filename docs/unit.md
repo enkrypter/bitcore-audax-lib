@@ -15,12 +15,12 @@ To understand the need of using the `Unit` class when dealing with unit conversi
 
 ## Supported units
 
-The supported units are MUE, mMUE, bits (micro MUEs, uMUE) and satoshis. The codes for each unit can be found as members of the Unit class.
+The supported units are AUDAX, mAUDAX, bits (micro AUDAXs, uAUDAX) and satoshis. The codes for each unit can be found as members of the Unit class.
 
 ```javascript
-var mueCode = Unit.MUE;
-var mmueCode = Unit.mMUE;
-var umueCode = Unit.uMUE;
+var audaxCode = Unit.AUDAX;
+var maudaxCode = Unit.mAUDAX;
+var uaudaxCode = Unit.uAUDAX;
 var bitsCode = Unit.bits;
 var satsCode = Unit.satoshis;
 ```
@@ -34,11 +34,11 @@ var unit;
 var amount = 100;
 
 // using a unit code
-var unitPreference = Unit.MUE;
+var unitPreference = Unit.AUDAX;
 unit = new Unit(amount, unitPreference);
 
 // using a known unit
-unit = Unit.fromMUE(amount);
+unit = Unit.fromAUDAX(amount);
 unit = Unit.fromMilis(amount);
 unit = Unit.fromBits(amount);
 unit = Unit.fromSatoshis(amount);
@@ -52,25 +52,25 @@ Once you have a unit instance, you can check its representation in all the avail
 var unit;
 
 // using a unit code
-var unitPreference = Unit.MUE;
+var unitPreference = Unit.AUDAX;
 value = Unit.fromSatoshis(amount).to(unitPreference);
 
 // using a known unit
-value = Unit.fromMUE(amount).toMUE();
-value = Unit.fromMUE(amount).toMilis();
-value = Unit.fromMUE(amount).toBits();
-value = Unit.fromMUE(amount).toSatoshis();
+value = Unit.fromAUDAX(amount).toAUDAX();
+value = Unit.fromAUDAX(amount).toMilis();
+value = Unit.fromAUDAX(amount).toBits();
+value = Unit.fromAUDAX(amount).toSatoshis();
 
 // using accessors
-value = Unit.fromMUE(amount).MUE;
-value = Unit.fromMUE(amount).mMUE;
-value = Unit.fromMUE(amount).bits;
-value = Unit.fromMUE(amount).satoshis;
+value = Unit.fromAUDAX(amount).AUDAX;
+value = Unit.fromAUDAX(amount).mAUDAX;
+value = Unit.fromAUDAX(amount).bits;
+value = Unit.fromAUDAX(amount).satoshis;
 ```
 
 ## Using a fiat currency
 
-The unit class also provides a convenient alternative to create an instance from a fiat amount and the corresponding MUE/fiat exchange rate. Any unit instance can be converted to a fiat amount by providing the current exchange rate. Check the example below:
+The unit class also provides a convenient alternative to create an instance from a fiat amount and the corresponding AUDAX/fiat exchange rate. Any unit instance can be converted to a fiat amount by providing the current exchange rate. Check the example below:
 
 ```javascript
 var unit, fiat;

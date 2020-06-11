@@ -40,7 +40,7 @@ To get started, just `npm install bitcore` or `bower install bitcore`.
 Some functionality is implemented as a module that can be installed separately:
 
 - [Peer to Peer Networking](https://github.com/bitpay/bitcore/tree/master/packages/bitcore-p2p)
-- [Bitcore Core JSON-RPC](https://github.com/bitpay/monetaryunitd-rpc)
+- [Bitcore Core JSON-RPC](https://github.com/bitpay/audaxd-rpc)
 - [Payment Channels](https://github.com/bitpay/bitcore-channel)
 - [Mnemonics](https://github.com/bitpay/bitcore/tree/master/packages/bitcore-mnemonic)
 - [Elliptical Curve Integrated Encryption Scheme](https://github.com/bitpay/bitcore-ecies)

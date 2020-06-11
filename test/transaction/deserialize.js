@@ -2,8 +2,8 @@
 
 var Transaction = require('../../lib/transaction');
 
-var vectors_valid = require('../data/monetaryunitd/tx_valid.json');
-var vectors_invalid = require('../data/monetaryunitd/tx_invalid.json');
+var vectors_valid = require('../data/audaxd/tx_valid.json');
+var vectors_invalid = require('../data/audaxd/tx_invalid.json');
 
 describe('Transaction deserialization', function() {
 
